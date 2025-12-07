@@ -10,12 +10,14 @@ from objects.garage import Garage
 from objects.garage_door import Door
 from objects.extra_elem import Extra_elem
 from objects import obj_loader
+from objects.car import Car
 
 # --- Variaveis globais ---
 my_garage = None
 my_door = None
 extra_elems = None
 tex_floor = None
+car = None #carro
 
 # Path da imagem de textura
 FLOOR_PATH  = "floor2_mosaic.jpg" 
@@ -118,9 +120,10 @@ def init():
 
     
     # Criar os objetos
-    global my_garage, my_door, extra_elems, tex_floor
+    global my_garage, my_door, extra_elems, tex_floor, car
     my_garage = Garage()
     my_door = Door()
+    car = Car()
 
     # Carregar as texturas
     tex_floor = load_texture(FLOOR_PATH,repeat=True)
@@ -176,6 +179,7 @@ def display():
     draw_floor()
     draw_axes()
     draw_extra_elems()
+    car.draw_car()
     
     if my_garage: my_garage.draw()
     if my_door: 
