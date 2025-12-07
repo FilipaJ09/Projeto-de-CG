@@ -1,8 +1,8 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 
-import pywavefront #biblioteca importada para conseguir usar o carro criado no blender no python
-from pywavefront.visualization import draw
+#import pywavefront #biblioteca importada para conseguir usar o carro criado no blender no python
+#from pywavefront.visualization import draw
 import numpy as np
 import sys, os
 from objects.obj_loader import OBJModel
@@ -19,14 +19,23 @@ class Car:
 
     #função para inicializar as componentes do carro
     def __init__(self):
-        
+        base_dir = os.path.dirname(__file__) 
+        models_dir = os.path.join(base_dir, "models")
+
         #componentes do carro
-        self.body = pywavefront.Wavefront("models/Body.obj")                #corpo principal do carro
+        """ self.body = pywavefront.Wavefront("models/Body.obj")                #corpo principal do carro
         self.left_door = pywavefront.Wavefront("models/Left_Door.obj")      #porta esquerda do carro
         self.right_door = pywavefront.Wavefront("models/Right_Door.obj")    #porta direira do carro
         self.back_wheels = pywavefront.Wavefront("models/Wheels_Bk.obj")    #rodas traseiras do carro
         self.front_wheels = pywavefront.Wavefront("models/Wheels_Ft.obj")   #rodas dianteiras do carro
         self.ste_wheel = pywavefront.Wavefront("models/Steering_Wheel.obj") #volante do carro 
+        """
+        self.body = OBJModel(os.path.join(models_dir, "Body.obj"))
+        self.left_door = OBJModel(os.path.join(models_dir, "Left_Door.obj"))
+        self.right_door = OBJModel(os.path.join(models_dir, "Right_Door.obj"))
+        self.back_wheels = OBJModel(os.path.join(models_dir, "Wheels_Bk.obj"))
+        self.front_wheels = OBJModel(os.path.join(models_dir, "Wheels_Ft.obj"))
+        self.ste_wheel = OBJModel(os.path.join(models_dir, "Steering_Wheel.obj"))
         
         #ângulos iniciais das partes móveis do carro
         self.left_door_angle = 0       #ângulo da porta esquerda
@@ -56,7 +65,8 @@ class Car:
         glTranslatef(*self.left_door_pivot)      # mover para pivot
         glRotatef(self.left_door_angle, 0, 1, 0) # rodar no eixo Y (porta balança para fora)
         glTranslatef(*(-self.left_door_pivot))   # voltar ao sítio
-        draw(self.left_door)
+        #draw(self.left_door)
+        self.left_door.draw()
         glPopMatrix()
 
     #função para desenhar a porta direita do carro
@@ -65,7 +75,8 @@ class Car:
         glTranslatef(*self.right_door_pivot)      # mover para pivot
         glRotatef(self.right_door_angle, 0, 1, 0) # rodar no eixo Y (porta balança para fora)
         glTranslatef(*(-self.right_door_pivot))   # voltar ao sítio
-        draw(self.right_door)
+        #draw(self.right_door)
+        self.right_door.draw()
         glPopMatrix()
 
     #função para desenhar as rodas traseiras do carro ---> com movimento mais lento atrás
@@ -74,7 +85,8 @@ class Car:
         glTranslatef(*self.back_wheels_pivot)      # mover para pivot
         glRotatef(self.back_wheels_angle, 0, 0, 1) # rodar no eixo X (rodas giram para andar)
         glTranslatef(*(-self.back_wheels_pivot))   # voltar ao sítio
-        draw(self.back_wheels)   # desenhar pneus
+        #draw(self.back_wheels)   # desenhar pneus
+        self.back_wheels.draw()
         glPopMatrix()
 
     #função para desenhar as rodas dianteiras do carro ---> com movimento mais rápido do que as rodas de trás
@@ -83,7 +95,8 @@ class Car:
         glTranslatef(*self.front_wheels_pivot)      # mover para pivot
         glRotatef(self.front_wheels_angle, 0, 0, 1) # rodar no eixo X (rodas giram para andar)
         glTranslatef(*(-self.front_wheels_pivot))   # voltar ao sítio
-        draw(self.front_wheels)   # desenhar pneus
+        #draw(self.front_wheels)   # desenhar pneus
+        self.front_wheels.draw()
         glPopMatrix() 
 
     #função para desenhar o volante do carro 
@@ -92,13 +105,14 @@ class Car:
         glTranslatef(*self.ste_wheel_pivot)      # mover para pivot
         glRotatef(self.ste_wheel_angle, 0, 1, 0) # rodar no eixo Y (volante gira para virar o carro)
         glTranslatef(*(-self.ste_wheel_pivot))   # voltar ao sítio
-        draw(self.ste_wheel)   # desenhar pneus
+        #draw(self.ste_wheel)   # desenhar pneus
+        self.ste_wheel.draw()
         glPopMatrix() 
 
     #função para desenhar o carro
     def draw_car(self):
-       
-        draw(self.body)  #desenhar corpo do carro
+        self.body.draw()
+        #draw(self.body)  #desenhar corpo do carro
       
         #desenhar portas 
         self.draw_left_door()
@@ -111,12 +125,3 @@ class Car:
 
         #desenhar volante
         self.draw_ste_wheel()
-
-         
-
-         
-         
-         
-         
-         
-        

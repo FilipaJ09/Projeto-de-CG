@@ -8,6 +8,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import sys, os
+from PIL import Image
 
 # -----------------------------------------------------------
 # Classe Material para guardar cor difusa e textura
