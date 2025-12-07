@@ -1,0 +1,26 @@
+# Blender 5.0.0 MTL File: 'Carro2.blend'
+# www.blender.org
+
+newmtl 10-Wheels_Fr
+Ka 1.000000 1.000000 1.000000
+Kd 0.129879 0.105922 0.030566
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns C:/10-Rodas Frente_Roughness.jpg
+map_refl C:/10-Rodas Frente_Metallic.jpg
+map_Bump -bm 1.000000 C:/10-Rodas Frente_Normal_OpenGL.jpg
+
+newmtl 13-Tires_Highpoly_Fr
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns C:/ 1-Tire HP Fr_Roughness.jpg
+map_refl C:/ 1-Tire HP Fr_Metallic.jpg
+map_Bump -bm 1.000000 C:/ 1-Tire HP Fr_Normal_OpenGL.jpg
