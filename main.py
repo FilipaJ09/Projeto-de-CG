@@ -49,9 +49,9 @@ def load_texture(path, repeat=True):
         devolvendo o id da textura para que depois possa ser aplicada
         no desenho dos objetos."""
     # Verificar se o caminho do ficheiro existe
-    # if not os.path.isfile(path):
-    #     print("Texture not found:", path)
-    #     sys.exit(1)
+    if not os.path.isfile(path):
+        print("Texture not found:", path)
+        sys.exit(1)
     base_dir = os.path.dirname(__file__)   # pasta onde está extra_elem.py
     path = os.path.join(base_dir, path)
     
