@@ -191,6 +191,8 @@ def display():
 
 def keyboard(key, x, y):
     global cam_x, cam_z, cam_yaw
+    
+    # Sair do programa
     if key in (b'\x1b', b'q'):
         try:
             glutLeaveMainLoop()
@@ -201,25 +203,55 @@ def keyboard(key, x, y):
     if key == b'g' and my_door: 
         my_door.trigger()
         glutPostRedisplay()
-
-    # Movimento Câmara (WASD)
-    rad_yaw = math.radians(cam_yaw)
-    if key == b'w':
-        cam_x += math.sin(rad_yaw) * CAM_SPEED
-        cam_z += math.cos(rad_yaw) * CAM_SPEED
-    elif key == b's':
-        cam_x -= math.sin(rad_yaw) * CAM_SPEED
-        cam_z -= math.cos(rad_yaw) * CAM_SPEED
-    elif key == b'a': cam_yaw -= ROT_SPEED
-    elif key == b'd': cam_yaw += ROT_SPEED
-
-    # Imprimir comandos
+    
+    # Mostrar comandos
     if key == b'h': mostrar_comandos()
+
+    # --- CÁLCULO DO MOVIMENTO ---
+    rad_yaw = math.radians(cam_yaw)
+    
+    # Vetor "Frente" (para onde estamos a olhar)
+    front_x = math.sin(rad_yaw) * CAM_SPEED
+    front_z = math.cos(rad_yaw) * CAM_SPEED
+    
+    # Vetor "Direita" (90 graus em relação à frente)
+    # Matematicamente, para rodar 90 graus: (x, z) -> (z, -x)
+    right_x = math.cos(rad_yaw) * CAM_SPEED
+    right_z = -math.sin(rad_yaw) * CAM_SPEED
+
+    # Movimento Frente/Trás (W/S)
+    if key == b'w':
+        cam_x += front_x
+        cam_z += front_z
+    elif key == b's':
+        cam_x -= front_x
+        cam_z -= front_z
+        
+    # Movimento Lateral (A/D) - "Strafe"
+    elif key == b'a': # Esquerda (Inverso da direita)
+        cam_x -= right_x
+        cam_z -= right_z
+    elif key == b'd': # Direita
+        cam_x += right_x
+        cam_z += right_z
 
     # Movimento Carro (TODO)
 
     # Interação com as Portas do Carro (TODO)
+
+    glutPostRedisplay()
+
+
+def special_keys(key, x, y):
+    global cam_yaw
     
+    # Rodar a câmara com as setas
+    if key == GLUT_KEY_LEFT:
+        cam_yaw -= ROT_SPEED
+    elif key == GLUT_KEY_RIGHT:
+        cam_yaw += ROT_SPEED
+
+    # Atualizar o ecrã
     glutPostRedisplay()
 
 def reshape(w, h):
@@ -247,6 +279,7 @@ def main():
     glutDisplayFunc(display)
     glutReshapeFunc(reshape)
     glutKeyboardFunc(keyboard)
+    glutSpecialFunc(special_keys)
     glutMainLoop()
     
 if __name__ == "__main__":
