@@ -9,13 +9,22 @@ from PIL import Image
 from objects.garage import Garage
 from objects.garage_door import Door
 from objects.extra_elem import Extra_elem
+from objects import obj_loader
 
 # --- Variaveis globais ---
 my_garage = None
 my_door = None
 extra_elems = None
 tex_floor = None
-FLOOR_PATH  = "floor2_mosaic.jpg" # caminho da imagem de textura
+
+# Path da imagem de textura
+FLOOR_PATH  = "floor2_mosaic.jpg" 
+# Paths dos elementos extra que podem ser desenhados
+SETA_PATH = "SetaGaragem.obj"
+BANCO_PATH = "BancoJardim.obj"
+TRIO_PATH = "GirlTrio.obj"
+CANDEEIRO_PATH = "CandeeiroRua.obj"
+ARVORE_PATH = "Arvore.obj"
 
 # Câmara
 cam_x, cam_y, cam_z = 0.0, 6.0, 20.0
@@ -143,8 +152,10 @@ def draw_floor():
     glDisable(GL_TEXTURE_2D)  
     
 def draw_extra_elems():
-    extra_elems = Extra_elem()
-    extra_elems.draw_object("GirlTrio")
+    girl_trio = Extra_elem(SETA_PATH)
+    girl_trio.draw(location=(5,5,5))
+
+    
     # TODO
     # Corrigir esta função
     # Desenhar todos os objetos
@@ -164,7 +175,7 @@ def display():
     # Desenhar Cena
     draw_floor()
     draw_axes()
-    #draw_extra_elems()
+    draw_extra_elems()
     
     if my_garage: my_garage.draw()
     if my_door: 
