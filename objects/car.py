@@ -87,7 +87,7 @@ class Car:
         glRotatef(self.left_door_angle, 0, 1, 0) # rodar no eixo Y (porta balança para fora)
         #glTranslatef(*(-self.left_door_pivot))   # voltar ao sítio
         glTranslatef(-0.55, 0.68,-0.9)
-        glTranslatef(0.62, 0.0,0.227) #para posicionar  no sítio certo
+        glTranslatef(0.62, 0.0,0.227) #para posicionar no sítio certo
         #draw(self.left_door)
         self.left_door.draw()
         glPopMatrix()
@@ -95,9 +95,12 @@ class Car:
     #função para desenhar a porta direita do carro
     def draw_right_door(self):
         glPushMatrix()
-        glTranslatef(*self.right_door_pivot)      # mover para pivot
+        glTranslatef(-0.55, -0.68,0.9)
+        # glTranslatef(*self.right_door_pivot)      # mover para pivot
         glRotatef(self.right_door_angle, 0, 1, 0) # rodar no eixo Y (porta balança para fora)
-        glTranslatef(*(-self.right_door_pivot))   # voltar ao sítio
+        # glTranslatef(*(-self.right_door_pivot))   # voltar ao sítio
+        glTranslatef(0.55, 0.68,-0.9)
+        glTranslatef(-0.62, 0.0,0.227) #para posicionar no sítio certo
         #draw(self.right_door)
         self.right_door.draw()
         glPopMatrix()
