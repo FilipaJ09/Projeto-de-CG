@@ -226,6 +226,13 @@ def display():
         if keys.get(b'2'): #carro anda para trás enquanto se pressiona a tecla 2
             car.car_move(forward=False)
 
+        #mover o volante conforme as teclas pressionadas
+        if keys.get(b'3'): #move o volante para a esquerda enquanto se pressiona a tecla 3
+            car.ste_wheel_turn(forward=True)
+        if keys.get(b'4'): #move o volante para a direita enquanto se pressiona a tecla 4
+            car.ste_wheel_turn(forward=False)
+
+        #desenhar o carro
         glPushMatrix()
         glTranslatef(0.0, 2.75, 6) #alterei z de 0  -filipa
         glScalef(3.0, 3.0, 3.0)

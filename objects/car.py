@@ -132,13 +132,21 @@ class Car:
         glPushMatrix()
         glTranslatef(-0.33,-0.63,0.9)
         # glTranslatef(*self.ste_wheel_pivot)      # mover para pivot
-        glRotatef(self.ste_wheel_angle, 0, 1, 0) # rodar no eixo Y (volante gira para virar o carro)
+        glRotatef(self.ste_wheel_angle, 0, 0, 1) # rodar no eixo Y (volante gira para virar o carro)
         # glTranslatef(*(-self.ste_wheel_pivot))   # voltar ao sítio
         glTranslatef(0.33,0.63,-0.9)
         glTranslatef(0.27, 0.07,0.47)
         #draw(self.ste_wheel)   # desenhar pneus
         self.ste_wheel.draw()
         glPopMatrix() 
+
+    def ste_wheel_turn(self, forward=True):
+        turn_angle = 5  #ângulo de viragem do volante por chamada da função
+
+        if forward:
+            self.ste_wheel_angle += turn_angle
+        else:
+            self.ste_wheel_angle -= turn_angle
 
      #função para animar a rotação das rodas do carro
     def car_move(self, forward=True):
