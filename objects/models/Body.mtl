@@ -14,6 +14,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 1-Body_Base_Color.jpg
 map_Pr 1-Body_Roughness.jpg
 map_Bump -bm 1.000000 1-Body_Normal_OpenGL.jpg
 
@@ -29,6 +30,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 13-Engine Fusca_Base_Color.jpg
 map_Pm 13-Engine Fusca_Metallic.jpg
 map_Pr 13-Engine Fusca_Roughness.jpg
 map_Bump -bm 1.000000 13-Engine Fusca_Normal_OpenGL.jpg
@@ -45,6 +47,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 2-Extensoes_Base_Color.jpg
 map_Pm 2-Extensoes_Metallic.jpg
 map_Pr 2-Extensoes_Roughness.jpg
 map_Bump -bm 1.000000 2-Extensoes_Normal_OpenGL.jpg
@@ -61,6 +64,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 3-Body Under_Base_Color_red.jpg
 map_Pm 3-Body Under_Metallic.jpg
 map_Pr 3-Body Under_Roughness.jpg
 map_Bump -bm 1.000000 3-Body Under_Normal_OpenGL.jpg
@@ -77,6 +81,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 5-Escape suspensao_Base_Color.jpg
 map_Pm 5-Escape suspensao_Metallic.jpg
 map_Pr 5-Escape suspensao_Roughness.jpg
 map_Bump -bm 1.000000 5-Escape suspensao_Normal_OpenGL.jpg
@@ -91,6 +96,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 6-Glass_Base_Color.jpg
 map_Pm 6-Glass_Metallic.jpg
 map_Pr 6-Glass_Roughness.jpg
 map_Ke 6-Glass_Emissive.jpg
@@ -125,6 +131,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 7-Interior Acessorios_Base_Color_red.jpg
 map_Pm 7-Interior Acessorios_Metallic.jpg
 map_Pr 7-Interior Acessorios_Roughness.jpg
 map_Bump -bm 1.000000 7-Interior Acessorios_Normal_OpenGL.jpg
@@ -141,6 +148,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 8-Interior estofados_Base_Color_dark.jpg
 map_Pm 8-Interior estofados_Metallic.jpg
 map_Pr 8-Interior estofados_Roughness.jpg
 map_Bump -bm 1.000000 8-Interior estofados_Normal_OpenGL.jpg
