@@ -2,25 +2,33 @@
 # www.blender.org
 
 newmtl 12-Wheels_Bk
-Ka 1.000000 1.000000 1.000000
 Kd 0.300925 0.304974 0.107480
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Ns C:/12-Rodas Atras_Roughness.jpg
-map_refl C:/12-Rodas Atras_Metallic.jpg
-map_Bump -bm 1.000000 C:/12-Rodas Atras_Normal_OpenGL.jpg
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Pm 12-Rodas Atras_Metallic.jpg
+map_Pr 12-Rodas Atras_Roughness.jpg
+map_Bump -bm 1.000000 12-Rodas Atras_Normal_OpenGL.jpg
 
 newmtl 14-Tires_Highpoly_Bk
-Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Ns C:/2-Tire hp bk_Roughness.jpg
-map_refl C:/2-Tire hp bk_Metallic.jpg
-map_Bump -bm 1.000000 C:/2-Tire hp bk_Normal_OpenGL.jpg
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Pm 2-Tire hp bk_Metallic.jpg
+map_Pr 2-Tire hp bk_Roughness.jpg
+map_Bump -bm 1.000000 2-Tire hp bk_Normal_OpenGL.jpg

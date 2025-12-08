@@ -1,7 +1,7 @@
 # Blender 5.0.0
 # www.blender.org
 mtllib Steering_Wheel.mtl
-o Steering_Wheel
+g Steering_Wheel_Malha
 v 0.493809 0.914603 0.524674
 v 0.493809 0.930702 0.534359
 v 0.492917 0.928947 0.537206
@@ -16003,6 +16003,7 @@ vt 0.720204 0.615526
 vt 0.084800 0.485956
 vt 0.116347 0.413280
 s 1
+g Steering_Wheel_7-Interior_Acessories
 usemtl 7-Interior_Acessories
 f 2580/1/1 1912/2/2 688/3/3
 f 4/4/4 3545/5/5 2580/6/1
