@@ -146,16 +146,15 @@ class Car:
 
         #atualizar a posição do carro 
         self.x += math.sin(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição X do carro com base na direção e velocidade
-        #self.z += math.cos(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição Z do carro com base na direção e velocidade
+        self.z += math.cos(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição Z do carro com base na direção e velocidade
         
         #velocidade de rotação das rodas
-        bk_rot = 3 * self.speed    #velocidade das rodas traseiras (mais lentas)
-        ft_rot = 7 * self.speed    #velocidade das rodas dianteiras (mais rápidas)
+        bk_rot = 0.025 * self.speed    #velocidade das rodas traseiras (mais lentas)
+        ft_rot = 0.05 * self.speed    #velocidade das rodas dianteiras (mais rápidas)
 
         #atualizar os ângulos de rotação das rodas
         self.back_wheels_angle += bk_rot * direction_multiplier  #atualizar o ângulo das rodas traseiras
         self.front_wheels_angle += ft_rot * direction_multiplier #atualizar o ângulo das rodas dianteiras
-
 
 
     #função para desenhar o carro
