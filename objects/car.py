@@ -4,6 +4,7 @@ from OpenGL.GLUT import *
 #import pywavefront #biblioteca importada para conseguir usar o carro criado no blender no python
 #from pywavefront.visualization import draw
 import numpy as np
+import math
 import sys, os
 from objects.obj_loader import OBJModel
 
@@ -23,7 +24,7 @@ class Car:
         models_dir = os.path.join(base_dir, "models")
 
         #componentes do carro
-        """ self.body = pywavefront.Wavefront("models/Body.obj")                #corpo principal do carro
+        """ self.body = pywavefront.Wavefront("models/Body.obj")            #corpo principal do carro
         self.left_door = pywavefront.Wavefront("models/Left_Door.obj")      #porta esquerda do carro
         self.right_door = pywavefront.Wavefront("models/Right_Door.obj")    #porta direira do carro
         self.back_wheels = pywavefront.Wavefront("models/Wheels_Bk.obj")    #rodas traseiras do carro
@@ -57,6 +58,13 @@ class Car:
         self.back_wheels_pivot = self.back_wheels_center   #pivô das rodas traseiras --> rodas giram em torno do seu centro
         self.front_wheels_pivot = self.front_wheels_center #pivô das rodas dianteiras --> rodas giram em torno do seu centro
         self.ste_wheel_pivot = self.ste_wheel_center       #pivô do volante --> volante gira em torno do seu centro
+
+        #posição e movimento do carro
+        self.x = 0.0          #posição X do carro
+        self.z = 0.0          #posição z do carro  
+        self.speed = 0.1      #velocidade do carro
+        self.direction = 0.0  #direção do carro em graus (estar em 0 graus faz o carro andar em frente)
+
 
     #função para abrir/fechar portas do carro
     def trigger(self, side ="left"):
@@ -121,8 +129,29 @@ class Car:
         self.ste_wheel.draw()
         glPopMatrix() 
 
+     #função para animar a rotação das rodas do carro
+    def car_move(self, forward=True):
+        direction_multiplier = 1 if forward else -1 #definir o sentido do movimento (frente ou trás)
+
+        #atualizar a posição do carro 
+        self.x += math.sin(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição X do carro com base na direção e velocidade
+        self.z += math.cos(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição Z do carro com base na direção e velocidade
+        
+        #velocidade de rotação das rodas
+        bk_rot = 5 * self.speed    #velocidade das rodas traseiras (mais lentas)
+        ft_rot = 7 * self.speed    #velocidade das rodas dianteiras (mais rápidas)
+
+        #atualizar os ângulos de rotação das rodas
+        self.back_wheels_angle += bk_rot * direction_multiplier  #atualizar o ângulo das rodas traseiras
+        self.front_wheels_angle += ft_rot * direction_multiplier #atualizar o ângulo das rodas dianteiras
+
+
+
     #função para desenhar o carro
     def draw_car(self):
+        glPushMatrix()
+        glTranslatef(self.x, 0.0, self.z)  #mover o carro para a sua posição atual
+        glRotatef(self.direction, 0, 1, 0) #rodar
         self.body.draw()
         #draw(self.body)  #desenhar corpo do carro
       
@@ -137,3 +166,10 @@ class Car:
 
         #desenhar volante
         self.draw_ste_wheel()
+        glPopMatrix()
+
+    def car_moving(self, key):
+        if key == GLUT_KEY_UP:      #se a seta para cima for pressionada o carro anda para frente
+            self.car_move(forward=True)
+        elif key == GLUT_KEY_DOWN:  #se a seta para baixo for pressionada o carro anda para trás
+            self.car_move(forward=False)
