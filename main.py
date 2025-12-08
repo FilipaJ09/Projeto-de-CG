@@ -220,6 +220,12 @@ def display():
     draw_scene_objects()
     
     if car: 
+        #mover o carro conforme as teclas pressionadas
+        if keys.get(b'1'): #carro anda para frente enquanto se pressiona a tecla 1
+            car.car_move(forward=True)
+        if keys.get(b'2'): #carro anda para trás enquanto se pressiona a tecla 2
+            car.car_move(forward=False)
+
         glPushMatrix()
         glTranslatef(0.0, 2, 6) #alterei z de 0  -filipa
         glScalef(3.0, 3.0, 3.0)
