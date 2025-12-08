@@ -185,8 +185,8 @@ def update_camera_logic():
         cam_z += rt_z
         
     # "Levitar"
-    if keys.get(b' '): cam_y += 0.2
-    if keys.get(b'x'): cam_y -= 0.2
+    if keys.get(b' '): cam_y += 0.1
+    if keys.get(b'x'): cam_y -= 0.1
 
 def display():
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
