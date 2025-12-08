@@ -121,6 +121,7 @@ class Car:
         self.ste_wheel.draw()                      #desenhar o volante
         glPopMatrix() 
 
+    #função para animar a viragem do volante
     def ste_wheel_turn(self, forward=True):
         turn_angle = 0.025  #ângulo de viragem do volante por chamada da função
 
