@@ -30,8 +30,8 @@ FLOOR_PATH  = "floor2_mosaic.jpg"
 cam_x, cam_y, cam_z = 0.0, 2.0, 15.0 # Começar um pouco mais perto e baixo
 cam_yaw = 180.0   # Rotação horizontal (olhar para trás inicialmente)
 cam_pitch = 0.0   # Rotação vertical (olhar em frente)
-CAM_SPEED = 0.2   # Velocidade de movimento
-ROT_SPEED = 2.0   # Velocidade de rotação
+CAM_SPEED = 0.1   # Velocidade de movimento
+ROT_SPEED = 1.0   # Velocidade de rotação
 
 def load_texture(path, repeat=True): 
     base_dir = os.path.dirname(__file__)
@@ -136,7 +136,8 @@ def draw_scene_objects():
         assets["banco"].draw(location=(-6, 1.5, 14), angle=180)
     
     if "trio" in assets:
-        assets["trio"].draw(location=(5, 2.5, 10), angle=-30)
+        assets["trio"].draw(location=(10, 2.5, 16), angle=60)
+        # assets["trio"].draw(location=(5, 2.5, 10), angle=-30)
         
     if "seta" in assets:
         rot = (time.time() * 50) % 360
@@ -220,7 +221,7 @@ def display():
     
     if car: 
         glPushMatrix()
-        glTranslatef(0.0, 2, 0.0)
+        glTranslatef(0.0, 2, 6) #alterei z de 0  -filipa
         glScalef(3.0, 3.0, 3.0)
         car.draw_car()
         glPopMatrix()
@@ -243,6 +244,8 @@ def keyboard_down(key, x, y):
         except Exception:
             sys.exit(0)
     if key == b'g' and my_door: my_door.trigger()
+    if key == b'l' and car:car.trigger("left")
+    if key == b'r' and car:car.trigger("right")
 
 def keyboard_up(key, x, y):
     keys[key] = False
@@ -283,6 +286,8 @@ def main():
     print("Setas: Olhar (Cima/Baixo/Esq/Dir)")
     print("Espaço/X: Subir/Descer altura")
     print("G: Abrir Garagem")
+    print("L: Abrir Porta Esquerda do Carro")
+    print("R: Abrir Porta Direita do Carro")
     print("Q/ESC: Sair")
     
     glutMainLoop()

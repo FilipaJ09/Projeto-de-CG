@@ -52,12 +52,24 @@ class Car:
         self.ste_wheel_min, self.ste_wheel_max, self.ste_wheel_center = calculate_pivot_points(self.ste_wheel)              #bounding boxes de pivô do volante
 
         #definir os pivôs das partes móveis do carro
-        self.left_door_pivot = self.left_door_min          #pivô da porta esquerda -->como min porque vai estar no eixo mais extremo
+        self.left_door_pivot = self.left_door_max          #pivô da porta esquerda -->como min porque vai estar no eixo mais extremo
         self.right_door_pivot = self.right_door_max        #pivô da porta direita -->como max porque vai estar no eixo mais extremo
         self.back_wheels_pivot = self.back_wheels_center   #pivô das rodas traseiras --> rodas giram em torno do seu centro
         self.front_wheels_pivot = self.front_wheels_center #pivô das rodas dianteiras --> rodas giram em torno do seu centro
         self.ste_wheel_pivot = self.ste_wheel_center       #pivô do volante --> volante gira em torno do seu centro
 
+    #função para abrir/fechar portas do carro
+    def trigger(self, side ="left"):
+        if side =="left":
+            if self.left_door_angle < 0 :
+                self.left_door_angle = 0
+            else :
+                self.left_door_angle = -50
+        elif side =="right":
+            if self.right_door_angle > 0 :
+                self.right_door_angle = 0
+            else :
+                self.right_door_angle = 50
 
     #função para desenhar a porta esquerda do carro
     def draw_left_door(self):
@@ -83,7 +95,7 @@ class Car:
     def draw_back_wheels(self):
         glPushMatrix()
         glTranslatef(*self.back_wheels_pivot)      # mover para pivot
-        glRotatef(self.back_wheels_angle, 0, 0, 1) # rodar no eixo X (rodas giram para andar)
+        glRotatef(self.back_wheels_angle, 1, 0, 0) # rodar no eixo X (rodas giram para andar)
         glTranslatef(*(-self.back_wheels_pivot))   # voltar ao sítio
         #draw(self.back_wheels)   # desenhar pneus
         self.back_wheels.draw()
@@ -93,7 +105,7 @@ class Car:
     def draw_front_wheels(self):
         glPushMatrix()
         glTranslatef(*self.front_wheels_pivot)      # mover para pivot
-        glRotatef(self.front_wheels_angle, 0, 0, 1) # rodar no eixo X (rodas giram para andar)
+        glRotatef(self.front_wheels_angle, 1, 0, 0) # rodar no eixo X (rodas giram para andar)
         glTranslatef(*(-self.front_wheels_pivot))   # voltar ao sítio
         #draw(self.front_wheels)   # desenhar pneus
         self.front_wheels.draw()
