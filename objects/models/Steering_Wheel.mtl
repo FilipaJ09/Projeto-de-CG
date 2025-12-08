@@ -2,13 +2,17 @@
 # www.blender.org
 
 newmtl 7-Interior_Acessories
-Ka 1.000000 1.000000 1.000000
 Kd 0.032716 0.651444 0.800000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Ns C:/7-Interior Acessorios_Roughness.jpg
-map_refl C:/7-Interior Acessorios_Metallic.jpg
-map_Bump -bm 1.000000 C:/7-Interior Acessorios_Normal_OpenGL.jpg
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Pm 7-Interior Acessorios_Metallic.jpg
+map_Pr 7-Interior Acessorios_Roughness.jpg
+map_Bump -bm 1.000000 7-Interior Acessorios_Normal_OpenGL.jpg
