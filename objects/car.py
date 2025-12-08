@@ -168,8 +168,4 @@ class Car:
         self.draw_ste_wheel()
         glPopMatrix()
 
-    def car_moving(self, key):
-        if key == GLUT_KEY_UP:      #se a seta para cima for pressionada o carro anda para frente
-            self.car_move(forward=True)
-        elif key == GLUT_KEY_DOWN:  #se a seta para baixo for pressionada o carro anda para trás
-            self.car_move(forward=False)
+    
