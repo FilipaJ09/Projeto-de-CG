@@ -119,24 +119,24 @@ def draw_scene_objects():
     
     # Candeeiro
     if "candeeiro" in assets:
-        assets["candeeiro"].draw(location=(-8, 0, 15), scale=(0.5,0.5,0.5))
-        # Luz do Candeeiro (simulada)
+        assets["candeeiro"].draw(location=(-8, 5, 15), scale=(1.5,1.5,1.5))
+        # Luz do Candeeiro 
         glEnable(GL_LIGHT2)
-        glLightfv(GL_LIGHT2, GL_POSITION, [-8.0, 4.5, 15.0, 1.0])
+        glLightfv(GL_LIGHT2, GL_POSITION, [-8.0, 8.5, 15.0, 1.0])
         glLightfv(GL_LIGHT2, GL_DIFFUSE, [1.0, 1.0, 0.8, 1.0]) 
         glLightfv(GL_LIGHT2, GL_QUADRATIC_ATTENUATION, 0.02) 
 
     # Árvores
     if "arvore" in assets:
-        assets["arvore"].draw(location=(12, 0, 5), scale=(1.2, 1.2, 1.2))
-        assets["arvore"].draw(location=(-15, 0, 10), scale=(1.5, 1.5, 1.5), angle=90)
+        assets["arvore"].draw(location=(12, 5.5, 5), scale=(1.2, 1.2, 1.2))
+        assets["arvore"].draw(location=(-15, 6.7, 10), scale=(1.5, 1.5, 1.5), angle=90)
 
     # Outros
     if "banco" in assets:
-        assets["banco"].draw(location=(-6, 0, 14), angle=180)
+        assets["banco"].draw(location=(-6, 1.5, 14), angle=180)
     
     if "trio" in assets:
-        assets["trio"].draw(location=(5, 0, 10), angle=-30)
+        assets["trio"].draw(location=(5, 2.5, 10), angle=-30)
         
     if "seta" in assets:
         rot = (time.time() * 50) % 360
