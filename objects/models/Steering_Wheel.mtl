@@ -13,6 +13,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 7-Interior Acessorios_Base_Color_red.jpg
 map_Pm 7-Interior Acessorios_Metallic.jpg
 map_Pr 7-Interior Acessorios_Roughness.jpg
 map_Bump -bm 1.000000 7-Interior Acessorios_Normal_OpenGL.jpg

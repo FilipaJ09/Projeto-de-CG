@@ -13,6 +13,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 10-Rodas Frente_Base_Color.jpg
 map_Pm 10-Rodas Frente_Metallic.jpg
 map_Pr 10-Rodas Frente_Roughness.jpg
 map_Bump -bm 1.000000 10-Rodas Frente_Normal_OpenGL.jpg
@@ -29,6 +30,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 1-Tire HP Fr_Base_Color.jpg
 map_Pm  1-Tire HP Fr_Metallic.jpg
 map_Pr  1-Tire HP Fr_Roughness.jpg
 map_Bump -bm 1.000000  1-Tire HP Fr_Normal_OpenGL.jpg

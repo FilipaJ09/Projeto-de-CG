@@ -13,6 +13,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 12-Rodas Atras_Base_Color.jpg
 map_Pm 12-Rodas Atras_Metallic.jpg
 map_Pr 12-Rodas Atras_Roughness.jpg
 map_Bump -bm 1.000000 12-Rodas Atras_Normal_OpenGL.jpg
@@ -29,6 +30,7 @@ Pc 0.000000
 Pcr 0.030000
 aniso 0.000000
 anisor 0.000000
+map_Kd 2-Tire hp bk_Base_Color.jpg
 map_Pm 2-Tire hp bk_Metallic.jpg
 map_Pr 2-Tire hp bk_Roughness.jpg
 map_Bump -bm 1.000000 2-Tire hp bk_Normal_OpenGL.jpg
