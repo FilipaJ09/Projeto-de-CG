@@ -20,8 +20,8 @@ car = None
 tex_floor = None
 
 # Dicionários de controlo
-keys = {}   # Guarda teclas premidas
-assets = {} # Guarda modelos 3D extras
+keys = {}   # Guarda teclas premidas, permite ter um movimento mais fluido 
+assets = {} # Guarda modelos 3D extras, tudo o que consegues carregar fic lá e não ha erros de carregamento, só usa o que la esta
 
 # Path da imagem de textura
 FLOOR_PATH  = "floor2_mosaic.jpg" 
@@ -79,7 +79,7 @@ def init():
     global my_garage, my_door, tex_floor, car
     my_garage = Garage()
     my_door = Door()
-    car = Car() # Certifica-te que o car.py está atualizado (versão sem pywavefront ou com caminhos corrigidos)
+    car = Car() 
 
     # Carregar Textura do Chão
     tex_floor = load_texture(FLOOR_PATH, repeat=True)
@@ -87,7 +87,6 @@ def init():
     # Carregar Assets Extras
     try:
         print("A carregar modelos extra...")
-        # Nota: Certifica-te que estes ficheiros .obj existem na pasta ou ajusta os nomes
         assets["arvore"] = Extra_elem("Arvore.obj")
         assets["candeeiro"] = Extra_elem("CandeeiroRua.obj")
         assets["banco"] = Extra_elem("BancoJardim.obj")
@@ -146,9 +145,9 @@ def draw_scene_objects():
 def update_camera_logic():
     global cam_x, cam_y, cam_z, cam_yaw, cam_pitch
 
-    # 1. Atualizar Ângulos (Olhar) - CORRIGIDO (Sinais Trocados)
-    if keys.get(GLUT_KEY_LEFT):  cam_yaw += ROT_SPEED  # Trocado de -= para +=
-    if keys.get(GLUT_KEY_RIGHT): cam_yaw -= ROT_SPEED  # Trocado de += para -=
+    # Atualizar Ângulos
+    if keys.get(GLUT_KEY_LEFT):  cam_yaw += ROT_SPEED  
+    if keys.get(GLUT_KEY_RIGHT): cam_yaw -= ROT_SPEED  
     
     if keys.get(GLUT_KEY_UP):    cam_pitch += ROT_SPEED 
     if keys.get(GLUT_KEY_DOWN):  cam_pitch -= ROT_SPEED 
@@ -157,7 +156,7 @@ def update_camera_logic():
     if cam_pitch > 89: cam_pitch = 89
     if cam_pitch < -89: cam_pitch = -89
 
-    # 2. Calcular Vetores
+    # Calcular Vetores
     rad_yaw = math.radians(cam_yaw)
     
     # Frente 
@@ -168,7 +167,7 @@ def update_camera_logic():
     rt_x = math.cos(rad_yaw) * CAM_SPEED
     rt_z = -math.sin(rad_yaw) * CAM_SPEED
 
-    # 3. Aplicar Movimento (WASD) - CORRIGIDO (A e D trocados)
+    # Aplicar Movimento (WASD)
     if keys.get(b'w'): # Frente
         cam_x += fw_x
         cam_z += fw_z
@@ -176,15 +175,15 @@ def update_camera_logic():
         cam_x -= fw_x
         cam_z -= fw_z
         
-    # CORREÇÃO AQUI: Invertemos os sinais do A e D
-    if keys.get(b'd'): # Direita (estava a ir para a esquerda)
-        cam_x -= rt_x  # Mudado de += para -=
+    
+    if keys.get(b'd'): # Direita 
+        cam_x -= rt_x  
         cam_z -= rt_z
-    if keys.get(b'a'): # Esquerda (estava a ir para a direita)
-        cam_x += rt_x  # Mudado de -= para +=
+    if keys.get(b'a'): # Esquerda 
+        cam_x += rt_x  
         cam_z += rt_z
         
-    # Levitar
+    # "Levitar"
     if keys.get(b' '): cam_y += 0.2
     if keys.get(b'x'): cam_y -= 0.2
 
@@ -193,11 +192,11 @@ def display():
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     
-    # 1. Processar Inputs e Lógica
+    # Processar Inputs e Lógica
     update_camera_logic()
     if my_door: my_door.update()
 
-    # 2. Configurar a Câmara (gluLookAt)
+    # Configurar a Câmara (gluLookAt)
     # Converter graus para radianos
     rad_yaw = math.radians(cam_yaw)
     rad_pitch = math.radians(cam_pitch)
@@ -215,7 +214,7 @@ def display():
               cam_x + look_dir_x, cam_y + look_dir_y, cam_z + look_dir_z,
               0.0, 1.0, 0.0)
 
-    # 3. Desenhar Cena
+    # Desenhar Cena
     draw_floor()
     draw_scene_objects()
     
