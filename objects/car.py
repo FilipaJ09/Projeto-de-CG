@@ -82,9 +82,12 @@ class Car:
     #função para desenhar a porta esquerda do carro
     def draw_left_door(self):
         glPushMatrix()
-        glTranslatef(*self.left_door_pivot)      # mover para pivot
+        #glTranslatef(*self.left_door_pivot)      # mover para pivot
+        glTranslatef(0.55, -0.68,0.9)
         glRotatef(self.left_door_angle, 0, 1, 0) # rodar no eixo Y (porta balança para fora)
-        glTranslatef(*(-self.left_door_pivot))   # voltar ao sítio
+        #glTranslatef(*(-self.left_door_pivot))   # voltar ao sítio
+        glTranslatef(-0.55, 0.68,-0.9)
+        glTranslatef(0.62, 0.0,0.227) #para posicionar  no sítio certo
         #draw(self.left_door)
         self.left_door.draw()
         glPopMatrix()
@@ -105,6 +108,7 @@ class Car:
         glTranslatef(*self.back_wheels_pivot)      # mover para pivot
         glRotatef(self.back_wheels_angle, 1, 0, 0) # rodar no eixo X (rodas giram para andar)
         glTranslatef(*(-self.back_wheels_pivot))   # voltar ao sítio
+        glTranslatef(0.0,-0.5,-1.0)
         #draw(self.back_wheels)   # desenhar pneus
         self.back_wheels.draw()
         glPopMatrix()
@@ -115,6 +119,7 @@ class Car:
         glTranslatef(*self.front_wheels_pivot)      # mover para pivot
         glRotatef(self.front_wheels_angle, 1, 0, 0) # rodar no eixo X (rodas giram para andar)
         glTranslatef(*(-self.front_wheels_pivot))   # voltar ao sítio
+        glTranslatef(0.0,-0.5,1.25)
         #draw(self.front_wheels)   # desenhar pneus
         self.front_wheels.draw()
         glPopMatrix() 
@@ -135,10 +140,10 @@ class Car:
 
         #atualizar a posição do carro 
         self.x += math.sin(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição X do carro com base na direção e velocidade
-        self.z += math.cos(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição Z do carro com base na direção e velocidade
+        #self.z += math.cos(math.radians(self.direction)) * self.speed * direction_multiplier #atualizar a posição Z do carro com base na direção e velocidade
         
         #velocidade de rotação das rodas
-        bk_rot = 5 * self.speed    #velocidade das rodas traseiras (mais lentas)
+        bk_rot = 3 * self.speed    #velocidade das rodas traseiras (mais lentas)
         ft_rot = 7 * self.speed    #velocidade das rodas dianteiras (mais rápidas)
 
         #atualizar os ângulos de rotação das rodas

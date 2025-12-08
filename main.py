@@ -227,7 +227,7 @@ def display():
             car.car_move(forward=False)
 
         glPushMatrix()
-        glTranslatef(0.0, 2, 6) #alterei z de 0  -filipa
+        glTranslatef(0.0, 2.75, 6) #alterei z de 0  -filipa
         glScalef(3.0, 3.0, 3.0)
         car.draw_car()
         glPopMatrix()
