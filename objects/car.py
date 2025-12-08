@@ -65,7 +65,6 @@ class Car:
         self.speed = 0.1      #velocidade do carro
         self.direction = 0.0  #direção do carro em graus (estar em 0 graus faz o carro andar em frente)
 
-
     #função para abrir/fechar portas do carro
     def trigger(self, side ="left"):
         if side =="left":
@@ -170,6 +169,7 @@ class Car:
         glPushMatrix()
         glTranslatef(self.x, 0.0, self.z)  #mover o carro para a sua posição atual
         glRotatef(self.direction, 0, 1, 0) #rodar
+        glColor3f(1.0, 1.0, 1.0)
         self.body.draw()
         #draw(self.body)  #desenhar corpo do carro
       
