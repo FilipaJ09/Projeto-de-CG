@@ -218,9 +218,18 @@ def display():
     draw_floor()
     draw_scene_objects()
     
-    if car: car.draw_car()
+    if car: 
+        glPushMatrix()
+        glTranslatef(0.0, 2, 0.0)
+        glScalef(3.0, 3.0, 3.0)
+        car.draw_car()
+        glPopMatrix()
     if my_garage: my_garage.draw()
-    if my_door: my_door.draw()
+    if my_door: 
+        glPushMatrix()
+        glScalef(3.0, 3.0, 3.0)
+        my_door.draw()
+        glPopMatrix()
     
     glutSwapBuffers()
     glutPostRedisplay()
@@ -228,7 +237,11 @@ def display():
 # --- Callbacks de Teclado ---
 def keyboard_down(key, x, y):
     keys[key] = True
-    if key in (b'\x1b', b'q'): sys.exit(0)
+    if key in (b'\x1b', b'q'):
+        try:
+            glutLeaveMainLoop()
+        except Exception:
+            sys.exit(0)
     if key == b'g' and my_door: my_door.trigger()
 
 def keyboard_up(key, x, y):

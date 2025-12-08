@@ -37,38 +37,33 @@ class Garage:
         glEnable(GL_CULL_FACE)
 
     def draw(self):
+        glPushMatrix()
+        glScalef(3, 3, 3)
+        white = (1.0, 1.0, 1.0)
         # -- Desenhar o Chão -- 
         self.draw_floor()
 
-        # -- Configurar Cores --
-        col_roof = (0.9, 0.9, 0.9)
-        col_walls = (0.3, 0.2, 0.1)
-        # Fachada
-        col_orange = (0.9, 0.5, 0.1)
-        col_red = (0.7, 0.2, 0.2)
-        col_purple = (0.6, 0.4, 0.7)
-        col_green = (0.2, 0.6, 0.3)
-        col_blue = (0.3, 0.5, 0.9)
-
         # -- Teto --
-        self.draw_block(0, self.wall_h, -self.depth/2, self.width, 0.2, self.depth, col_roof)
-        
-        # -- Paredes (Trás e Lados) --
-        self.draw_block(0, self.wall_h/2, -self.depth, self.width, self.wall_h, self.thickness, col_walls)
-        self.draw_block(-self.width/2 + self.thickness/2, self.wall_h/2, -self.depth/2, self.thickness, self.wall_h, self.depth, col_walls)
-        self.draw_block(self.width/2 - self.thickness/2, self.wall_h/2, -self.depth/2, self.thickness, self.wall_h, self.depth, col_walls)
+        self.draw_block(0, self.wall_h, -self.depth/2, self.width, 0.2, self.depth, white)
 
-        # -- Fachada Frontal --
+        # -- Paredes (Trás e Lados) --
+        self.draw_block(0, self.wall_h/2, -self.depth, self.width, self.wall_h, self.thickness, white)
+        self.draw_block(-self.width/2 + self.thickness/2, self.wall_h/2, -self.depth/2, self.thickness, self.wall_h, self.depth, white)
+        self.draw_block(self.width/2 - self.thickness/2, self.wall_h/2, -self.depth/2, self.thickness, self.wall_h, self.depth, white)
+
+        # -- Fachada Frontal (Agora toda branca) --
         z_face = 0.0
         # Lado Esquerdo
-        self.draw_block(-4.5, self.wall_h/2, z_face, 1.5, self.wall_h, self.thickness, col_orange) 
-        self.draw_block(-2.0, self.wall_h/2, z_face, 1.0, self.wall_h, self.thickness, col_red)    
-        self.draw_block(-3.25, 3.0, z_face, 1.5, 1.0, self.thickness, col_purple)        
-        self.draw_block(-3.25, 0.5, z_face, 1.5, 1.0, self.thickness, col_purple)        
+        self.draw_block(-4.5, self.wall_h/2, z_face, 1.5, self.wall_h, self.thickness, white) 
+        self.draw_block(-2.0, self.wall_h/2, z_face, 1.0, self.wall_h, self.thickness, white)    
+        self.draw_block(-3.25, 3.0, z_face, 1.5, 1.0, self.thickness, white)        
+        self.draw_block(-3.25, 0.5, z_face, 1.5, 1.0, self.thickness, white)        
         # Lado Direito
-        self.draw_block(4.5, self.wall_h/2, z_face, 1.5, self.wall_h, self.thickness, (0.4, 0.2, 0.6)) 
-        self.draw_block(2.0, self.wall_h/2, z_face, 1.0, self.wall_h, self.thickness, col_green)       
-        self.draw_block(3.25, 3.0, z_face, 1.5, 1.0, self.thickness, col_blue)               
-        self.draw_block(3.25, 0.5, z_face, 1.5, 1.0, self.thickness, col_blue)               
+        self.draw_block(4.5, self.wall_h/2, z_face, 1.5, self.wall_h, self.thickness, white) 
+        self.draw_block(2.0, self.wall_h/2, z_face, 1.0, self.wall_h, self.thickness, white)       
+        self.draw_block(3.25, 3.0, z_face, 1.5, 1.0, self.thickness, white)               
+        self.draw_block(3.25, 0.5, z_face, 1.5, 1.0, self.thickness, white)               
         # Placa Central
-        self.draw_block(0.0, 3.25, z_face, 3.0, 1.5, self.thickness, (0.7, 0.7, 0.8))
+        self.draw_block(0.0, 3.25, z_face, 3.0, 1.5, self.thickness, white)
+
+        glPopMatrix()
